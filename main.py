@@ -1,4 +1,6 @@
 from todo import *
+# from gui import *
+# tkinter version not compatible with mac big sur os
 
 def create_list(ls):
     todo = Todo()
