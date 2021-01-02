@@ -1,17 +1,17 @@
-from todo import *
-# from gui import *
+from lib import todo
+
+# from lib import gui
 # tkinter version not compatible with mac big sur os
 
 def create_list(ls):
-    todo = Todo()
-    [todo.set_items(n) for n in ls]
-    return todo
+    to_do = todo.Todo()
+    [to_do.set_items(n) for n in ls]
+    return to_do
 
 def main():
     ls = ['take a walk', 'feed the dog', 'read books']
-    todo = create_list(ls)
-    print(todo.get_items)
+    to_do = create_list(ls)
+    print(to_do.get_items)
 
 if __name__ == '__main__':
     main()
-
