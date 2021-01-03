@@ -11,7 +11,7 @@ def create_todo_list(ls):
 def make_list():
     total = []
     while True:
-        ls = input('What do you need to do?\n')
+        ls = input('What do you need to do? Key `Enter` when done.\n')
         if ls == '':
             break
         total.append(ls)
@@ -27,7 +27,7 @@ def main():
     # ls = ['take a walk', 'feed the dog', 'read books']
     ls = make_list() 
     to_do = create_todo_list(ls)
-    print(to_do.get_items)
+    print(f'{to_do.get_items} are your items')
 
 if __name__ == '__main__':
     main()
