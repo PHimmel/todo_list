@@ -1,6 +1,6 @@
 class Todo:
     def __init__(self, items=None):
-        if items == None:
+        if items is None:
             items = []
         self.items = items
    
