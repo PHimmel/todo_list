@@ -1,3 +1,5 @@
 #!/bin/bash
-printf "alias todo=``" >> ~/.bashrc
+cd ..
+printf "alias todo=`$PWD + main`" >> ~/.bashrc
+exec "$SHELL"
 
