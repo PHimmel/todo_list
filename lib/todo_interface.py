@@ -8,20 +8,24 @@ class TodoInterface:
 
     def __init__(self):
         self.todo = todo.Todo()
+       # self.list = []
 
-    def create_todo_list(self, ls):
-        # to_do = todo.Todo()
-        [self.todo.set_items(n) for n in ls]
-        # return to_do
+    def get_items(self):
+        return self.todo.get_items()
 
-    def make_list(self):
-        total = []
+    def set_items(self, item):
+        self.set_items(item)
+
+    # def create_todo_list_from_list(self, ls):
+    #     [self.todo.set_items(n) for n in ls]
+
+    def create_list_from_user_input(self):
         while True:
             ls = input('What do you need to do? Key `Enter` when done.\n')
             if ls == '':
                 break
-            total.append(ls)
-        return total
+            #self.list.append(ls)
+            self.todo.set_items(ls)
 
     def what_has_been_done(self):
         pass
