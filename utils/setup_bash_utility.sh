@@ -1,5 +1,7 @@
 #!/bin/bash
+printf "running installer\n"
 cd ..
-printf "alias todo=`$PWD + main`" >> ~/.bashrc
+echo "alias todo=`$PWD + main`" >> ~/.bashrc
 exec "$SHELL"
+printf "installed\n"
 
