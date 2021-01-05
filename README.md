@@ -10,7 +10,7 @@ Edit and run the main program. Execute the bash script for use as a persistant t
 
 `bash setup_bash_utility.sh`
 
-## Examples
+### Examples
 
 basic execution:
 
