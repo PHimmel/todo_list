@@ -53,15 +53,15 @@ def get_todo():
     return todo
 
 
-def main():
-    prompt = Prompt()
-
-    when = prompt.prompt_for_time_of_item()
-    when = verify_time_of_item(when)
-
-    item = prompt.prompt_for_value_of_item()
-    update_todo(when, item)
-    print(get_todo())
+# def main():
+#     prompt = Prompt()
+#
+#     prompt.prompt_for_time_of_item()
+#     when = verify_time_of_item(prompt.when)
+#
+#     item = prompt.prompt_for_value_of_item()
+#     update_todo(when, item)
+#     print(get_todo())
 
 # todo['morning'].append('go for a run')
 
