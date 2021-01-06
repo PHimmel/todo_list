@@ -1,10 +1,7 @@
 from lib import todo_dict as td
 
-# ls = ['take a walk', 'feed the dog', 'read books']
 
-
-def standard_start():
-
+def standard_start_for_time():
     prompt = td.Prompt()
 
     # get unlimited prompting for items
@@ -12,16 +9,19 @@ def standard_start():
         when = prompt.prompt_for_time_of_item()
         item = prompt.prompt_for_value_of_item()
 
-        td.update_todo(when, item)
+        td.update_time(when, item)
 
-    return td.todo
+    return td.time
+
+
+def update_items():
+    pass
 
 
 def main():
-    items = standard_start()
+    items = standard_start_for_time()
     print(items)
 
 
 if __name__ == '__main__':
     main()
-

@@ -3,39 +3,30 @@ The basic structure is within a dict:
    { category , [item0, item1, item2, ... ]}
 """
 
-todo = {'morning': [],
-        'afternoon': [],
-        'evening': []}
+
+class Todo:
+    def __init__(self):
+        pass
+
+    def get_time(self):
+        return {'morning': [],
+                'afternoon': [],
+                'evening': []}
+
+    def get_week(self):
+        return {'Monday': self.get_time(),
+                'Tuesday': self.get_time(),
+                'Wednesday': self.get_time(),
+                'Thursday': self.get_time(),
+                'Friday': self.get_time(),
+                'Saturday': self.get_time(),
+                'Sunday': self.get_time()}
+
+time = get_time()
 
 
-def update_todo(when, item):
-    todo[when].append(item)
-
-# class Todo:
-#     def __init__(self):
-#         self.items = {}
-
-
-# class Todo:
-#     def __init__(self, items=None):
-#         if items is None:
-#             items = []
-#         self.items = items
-#
-#     def __str__(self):
-#         return self.__repr__()
-#
-#     def __repr__(self):
-#         return f'Todo(): {self.items}'
-#
-#     def get_items(self):
-#         return f'{self.items} are your items'
-#
-#     def set_items(self, item):
-#         self.items.append(item)
-#
-#     def remove_items(self, item):
-#         self.items.remove(item)
+def update_time(when, item):
+    time[when].append(item)
 
 
 class Prompt:
