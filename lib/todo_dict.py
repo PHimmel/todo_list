@@ -6,27 +6,28 @@ The basic structure is within a dict:
 
 class Todo:
     def __init__(self):
-        pass
+        self.time = self.create_time()
+        self.day = self.create_week()
+        self.when = None
+        self.item = None
 
-    def get_time(self):
+    @staticmethod
+    def create_time():
         return {'morning': [],
                 'afternoon': [],
                 'evening': []}
 
-    def get_week(self):
-        return {'Monday': self.get_time(),
-                'Tuesday': self.get_time(),
-                'Wednesday': self.get_time(),
-                'Thursday': self.get_time(),
-                'Friday': self.get_time(),
-                'Saturday': self.get_time(),
-                'Sunday': self.get_time()}
+    def create_week(self):
+        return {'Monday': self.create_time(),
+                'Tuesday': self.create_time(),
+                'Wednesday': self.create_time(),
+                'Thursday': self.create_time(),
+                'Friday': self.create_time(),
+                'Saturday': self.create_time(),
+                'Sunday': self.create_time()}
 
-time = get_time()
-
-
-def update_time(when, item):
-    time[when].append(item)
+    def update_time(self):
+        self.time[self.when].append(self.item)
 
 
 class Prompt:

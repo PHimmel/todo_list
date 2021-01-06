@@ -1,17 +1,18 @@
 from lib import todo_dict as td
 
 
-def standard_start_for_time():
+def standard_start_for_time(todo):
     prompt = td.Prompt()
 
     # get unlimited prompting for items
     while prompt.prompt_to_continue() == 'y':
-        when = prompt.prompt_for_time_of_item()
-        item = prompt.prompt_for_value_of_item()
+        todo.when = prompt.prompt_for_time_of_item()
+        todo.item = prompt.prompt_for_value_of_item()
 
-        td.update_time(when, item)
+        todo.update_time()
+        #td.update_time(when, item)
 
-    return td.time
+    return todo # td.time
 
 
 def update_items():
@@ -19,8 +20,10 @@ def update_items():
 
 
 def main():
-    items = standard_start_for_time()
-    print(items)
+    todo = td.Todo()
+    items = standard_start_for_time(todo)
+
+    print(items.when, items.item, items.time)
 
 
 if __name__ == '__main__':
