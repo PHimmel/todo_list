@@ -2,7 +2,16 @@ from lib import todo_dict as td
 
 
 def standard_start_for_week(todo):
-    pass
+    prompt = td.Prompt()
+
+    while prompt.prompt_to_continue() == 'y':
+        todo.day = None
+        todo.when = prompt.prompt_for_time_of_item()
+        todo.item = prompt.prompt_for_value_of_item()
+
+        todo.update_time()
+
+    return todo
 
 
 def standard_start_for_time(todo):
