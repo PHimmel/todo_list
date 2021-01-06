@@ -35,6 +35,9 @@ class Prompt:
         self.when = None
         self.what = None
 
+    def prompt_for_day(self):
+        pass
+
     # Key value
     def prompt_for_time_of_item(self):
         self.when = int(input('When is the item for:\n1) morning\n2) afternoon\n3) evening\n'))
