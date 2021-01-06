@@ -7,19 +7,19 @@ def standard_start():
 
     prompt = td.Prompt()
 
-    while True:
-        prompt.prompt_for_time_of_item()
-        when = td.verify_time_of_item(prompt.when)
-
+    # get unlimited prompting for items
+    while prompt.prompt_to_continue() == 'y':
+        when = prompt.prompt_for_time_of_item()
         item = prompt.prompt_for_value_of_item()
+
         td.update_todo(when, item)
-        if prompt.prompt_to_continue() != 'y':
-            break
-    print(td.get_todo())
+
+    return td.todo
 
 
 def main():
-    standard_start()
+    items = standard_start()
+    print(items)
 
 
 if __name__ == '__main__':
