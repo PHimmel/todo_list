@@ -5,3 +5,4 @@ __pycache__/
 .gui.py.swp
 .idea/
 test.sh
+todo.txt
