@@ -11,6 +11,8 @@ class Todo:
         self.when = None
         self.item = None
 
+    # TURN THESE TWO INTO VARIABLE/ATTRIBUTES
+
     @staticmethod
     def create_time():
         return {'morning': [],
