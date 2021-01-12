@@ -64,3 +64,9 @@ class Prompt:
             return 'afternoon'
         else:
             return 'evening'
+
+
+class Output:
+    def __init__(self):
+        pass
+
