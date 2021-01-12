@@ -10,6 +10,7 @@ Edit and run the main program. Execute the bash script for use as a persistant t
 
 `bash setup_bash_utility.sh`
 
+Add a regular txt fileto the main directory for static input.
 ### Examples
 
 basic execution:
