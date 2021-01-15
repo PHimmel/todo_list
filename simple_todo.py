@@ -8,39 +8,28 @@ enter_activity = 'What is the activity?\n'
 read = 'read'
 write = 'write'
 delete = 'delete'
-erase_file = 'erase_file'
+erase = 'erase'
+actions = [read, write, delete, erase]
 
 
 def prompt_for_action():
     action = int(input(enter_action))
-    if action < 1 or action > 4:
-        prompt_for_action()
-    return action
+    if 0 >= action or action > len(actions):
+        raise ValueError('Input exceeds options available')
+        # prompt_for_action() --> retains the current value of 'action'
+    return actions[action - 1]
 
 
-def verify_action(action):
-    if action == 1:
-        action = read
+def read_file():
+    file = access_external_file(read)
+    print(file)
+    exit()
 
-        file = access_external_file(action)
-        print(file)
-        # return main()
-        exit()
 
-    elif action == 2:
-        return write
-
-    elif action == 3:
-        return delete
-
-    elif action == 4:
-        action = erase_file
-        access_external_file(action)
-        print('new file made')
-        exit()
-        
-    else:
-        print('failed to choose action')
+def erase_file():
+    access_external_file(erase)
+    print('new file made')
+    exit()
 
 
 """
@@ -53,6 +42,7 @@ def prompt_for_data(string):
     return data
 
 
+# Boolean
 def verify_time_data(time):
     if 0 < int(time) < 2400 and len(time) == 4:
         return True
@@ -67,6 +57,7 @@ def verify_activity_data(activity):
     pass
 
 
+# Boolean
 def data_entry_loop_control():
     go_on = input('Enter \'y\' to continue entering items.\n')
     if go_on == 'y':
@@ -82,7 +73,6 @@ data == what to pass in/remove from doc
 
 
 def access_external_file(action, data=None):
-
     with open('simple_todo_test.txt', 'a+') as doc:
 
         if action == read:
@@ -94,10 +84,9 @@ def access_external_file(action, data=None):
             doc.close()
 
         elif action == delete:
-            pass
+            print('delete')
 
-        elif action == erase_file:
-            print('test')
+        elif action == erase:
             doc.truncate(0)
 
         else:
@@ -105,9 +94,14 @@ def access_external_file(action, data=None):
 
 
 def main():
-    prompt_action = prompt_for_action()
-    action = verify_action(prompt_action)
+    action = prompt_for_action()
 
+    # no input required conditionals
+    if action == read:
+        read_file()
+    if action == erase:
+        erase_file()
+    # while loop for continual input
     while True:
 
         time = prompt_for_data(enter_time)
@@ -118,7 +112,7 @@ def main():
         if verify_activity_data(activity) is False:
             raise ValueError('Activity is not valid\n')
 
-        processed_data = f'{time} --- {activity}\n'
+        processed_data = f'{time} --> {activity}\n'
 
         access_external_file(action, processed_data)
 
@@ -130,4 +124,3 @@ def main():
 
 if __name__ == '__main__':
     main()
-
