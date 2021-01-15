@@ -1,0 +1,24 @@
+How should this be ordered?
+
+1. Prompt for user input to add data:
+
+    input should be time and activity
+    input is verified
+    input is stored in an external file
+
+2. Prompt for user to remove current data:
+    enter time and activity to be deleted
+    input is verified
+    input is removed from external file
+
+2. Display current data
+    List all items and their times from the external file
+
+
+
+1 + 2 commonalities:
+    Prompt for input
+    input verification
+
+1 + 2 + 3 commonalities:
+    external file is accessed
