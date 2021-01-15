@@ -5,4 +5,5 @@ __pycache__/
 .gui.py.swp
 .idea/
 test.sh
-todo.txttodo.txt
+todo.txt
+simple_todo_test.txt

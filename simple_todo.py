@@ -1,3 +1,5 @@
+from datetime import datetime
+
 # Base strings for prompt
 enter_action = '\nEnter -1- to view all items, -2- to add items or -3- to remove items.' \
                'Enter -4- to erase all your items\n'
@@ -38,8 +40,7 @@ Used for all data entry and verification
 
 
 def prompt_for_data(string):
-    data = input(string)
-    return data
+    return input(string)
 
 
 # Boolean
@@ -50,7 +51,8 @@ def verify_time_data(time):
 
 
 def format_time(time):
-    pass
+    convert = datetime.strptime(time, '%H%M')
+    return convert.strftime('%I:%M %p')
 
 
 def verify_activity_data(activity):
@@ -78,19 +80,15 @@ def access_external_file(action, data=None):
         if action == read:
             doc.seek(0)
             return doc.read()
-
         elif action == write:
             doc.write(data)
-            doc.close()
-
         elif action == delete:
             print('delete')
-
         elif action == erase:
             doc.truncate(0)
-
         else:
             print('failed to use file')
+        doc.close()
 
 
 def main():
@@ -107,12 +105,13 @@ def main():
         time = prompt_for_data(enter_time)
         if verify_time_data(time) is False:
             raise ValueError('Time is not a 4-position number between 0000 and 2399\n')
+        formatted_time = format_time(time)
 
         activity = prompt_for_data(enter_activity)
         if verify_activity_data(activity) is False:
             raise ValueError('Activity is not valid\n')
 
-        processed_data = f'{time} --> {activity}\n'
+        processed_data = f'{formatted_time} --> {activity}\n'
 
         access_external_file(action, processed_data)
 
