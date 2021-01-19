@@ -22,3 +22,15 @@ How should this be ordered?
 
 1 + 2 + 3 commonalities:
     external file is accessed
+
+Maybe add Tkinter gui to it
+Else it is only for command line/ boring and plain
+
+Tkinter:
+Make main window
+put main menu in it
+with buttons for 4 options ---> new file, list all, add, delete
+make 4 new corresponding windows, with option to return to main window
+
+Add text fields for add/delete options
+

@@ -1,3 +1,11 @@
+"""
+Main building blocks:
+    1. prompts for which action to perform/what data to use
+    2. validation of the input (correct option selected, etc.)
+    3. accessing, and manipulation, of the txt file
+    4. output of either requested info or status of action
+"""
+
 from datetime import datetime
 
 # Base strings for prompt
@@ -44,13 +52,17 @@ def prompt_for_data(string):
 
 
 # Boolean
-def verify_time_data(time):
+def verify_24hr_time_input(time):
     if 0 < int(time) < 2400 and len(time) == 4:
         return True
     return False
 
 
-def format_time(time):
+def verify_12hr_time_input(time):
+    pass
+
+
+def format_24hr_time(time):
     convert = datetime.strptime(time, '%H%M')
     return convert.strftime('%I:%M %p')
 
@@ -83,6 +95,7 @@ def access_external_file(action, data=None):
         elif action == write:
             doc.write(data)
         elif action == delete:
+            # print file and request specific line number for deletion?
             print('delete')
         elif action == erase:
             doc.truncate(0)
@@ -103,15 +116,16 @@ def main():
     while True:
 
         time = prompt_for_data(enter_time)
-        if verify_time_data(time) is False:
+        if verify_24hr_time_input(time) is False and verify_12hr_time_input(time) is False:
             raise ValueError('Time is not a 4-position number between 0000 and 2399\n')
-        formatted_time = format_time(time)
+        if verify_24hr_time_input(time):
+            time = format_24hr_time(time)
 
         activity = prompt_for_data(enter_activity)
         if verify_activity_data(activity) is False:
             raise ValueError('Activity is not valid\n')
 
-        processed_data = f'{formatted_time} --> {activity}\n'
+        processed_data = f'{time} --> {activity}\n'
 
         access_external_file(action, processed_data)
 
